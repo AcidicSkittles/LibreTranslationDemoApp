@@ -1,5 +1,10 @@
 # yikyak-translate-ios - iOS Take Home Project
 
+This was a take home test to create a translation app in SwiftUI. A base project was provided (my initial commit to this repo) and it was my responsibility to fill in the functionality (any commits after the initial to this repo).
+Below is the original prompt for reference.
+
+
+
 ## Before you start
 
 - Make sure you have the latest stable version of Xcode and have a way to connect to a GitHub repository. You should be ready to run code from a repo on a physical device or simulator.

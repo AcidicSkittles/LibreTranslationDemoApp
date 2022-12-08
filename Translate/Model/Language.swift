@@ -1,6 +1,5 @@
 import Foundation
 
-
 struct Language: Hashable, Identifiable, Codable {
     let id: String
     let name: String

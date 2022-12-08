@@ -3,7 +3,7 @@ import SwiftUI
 
 struct TranslationView: View {
 
-    @State private var selectedLanguage: Language = Language(id: "en", name: "English")
+    @State private var selectedLanguage: Language = TranslationViewModel.sourceLanguage
     @State private var inputText: String = ""
     @StateObject private var viewModel = TranslationViewModel()
     
@@ -31,14 +31,20 @@ struct TranslationView: View {
                     }
                 }.listStyle(InsetGroupedListStyle())
                 
-                Button("Translate!", action: translate).padding()
+                if viewModel.isLoading {
+                    ProgressView().padding()
+                }
+                else {
+                    Button("Translate!", action: translate).padding().disabled(inputText.count == 0)
+                }
+            }.alert(isPresented: $viewModel.showErrorAlert) {
+                Alert(title: Text("Error"), message: Text(viewModel.errorMessage), dismissButton: .default(Text("Okay"), action: viewModel.hideErrorAlert))
             }
         }
     }
     
     func translate() {
-        print("Not implemented")
-        // TODO: you will need to implement this
+        self.viewModel.translate(text: inputText, targetLanguage: selectedLanguage)
     }
 }
 
